@@ -1,0 +1,828 @@
+{
+ "config": {
+  "n": 300,
+  "seed": 42,
+  "n_rules": 81
+ },
+ "case_study": [
+  {
+   "student": "A",
+   "inputs": {
+    "attendance": 92.0,
+    "marks": 88.0,
+    "assignments": 90.0,
+    "study_hours": 7.0
+   },
+   "terms": "high / good / good / high",
+   "score": 89.5,
+   "label": "excellent",
+   "expected": "excellent",
+   "match": true,
+   "fired": 1
+  },
+  {
+   "student": "B",
+   "inputs": {
+    "attendance": 52.0,
+    "marks": 52.0,
+    "assignments": 50.0,
+    "study_hours": 4.0
+   },
+   "terms": "medium / average / average / medium",
+   "score": 43.0,
+   "label": "average",
+   "expected": "average",
+   "match": true,
+   "fired": 4
+  },
+  {
+   "student": "C",
+   "inputs": {
+    "attendance": 25.0,
+    "marks": 22.0,
+    "assignments": 20.0,
+    "study_hours": 1.0
+   },
+   "terms": "low / poor / poor / low",
+   "score": 13.6,
+   "label": "poor",
+   "expected": "poor",
+   "match": true,
+   "fired": 1
+  },
+  {
+   "student": "D",
+   "inputs": {
+    "attendance": 90.0,
+    "marks": 55.0,
+    "assignments": 60.0,
+    "study_hours": 7.0
+   },
+   "terms": "high / average / average / high",
+   "score": 67.4,
+   "label": "good",
+   "expected": "good",
+   "match": true,
+   "fired": 4
+  }
+ ],
+ "evaluation": {
+  "fis": {
+   "raw_r": 0.9483,
+   "raw_r2": 0.8993,
+   "raw_rho": 0.9528,
+   "raw_mae": 6.2872,
+   "raw_rmse": 7.676,
+   "cal_mae": 4.723,
+   "cal_rmse": 5.8089,
+   "accuracy": 0.7111,
+   "within_one": 1.0,
+   "kappa_qw": 0.7999,
+   "macro_f1": 0.7106
+  },
+  "ols": {
+   "raw_r": 0.9743,
+   "raw_r2": 0.9492,
+   "raw_rho": 0.9723,
+   "raw_mae": 3.4517,
+   "raw_rmse": 4.1001,
+   "accuracy": 0.9333,
+   "within_one": 1.0,
+   "kappa_qw": 0.9424,
+   "macro_f1": 0.8998
+  }
+ },
+ "ols_coef": {
+  "intercept": 0.3287003968236182,
+  "attendance": 0.24909819775153508,
+  "marks": 0.39580002152173155,
+  "assignments": 0.26948454482282863,
+  "study_hours": 1.4523947749980834
+ },
+ "class_counts_true": [
+  18,
+  100,
+  145,
+  37
+ ],
+ "confusion_fis": [
+  [
+   6,
+   0,
+   0,
+   0
+  ],
+  [
+   8,
+   18,
+   0,
+   0
+  ],
+  [
+   0,
+   15,
+   31,
+   0
+  ],
+  [
+   0,
+   0,
+   3,
+   9
+  ]
+ ],
+ "ablation": [
+  {
+   "name": "Baseline (tri, min, centroid, 4 inputs)",
+   "n_rules": 81,
+   "raw_r": 0.9483,
+   "raw_r2": 0.8993,
+   "raw_rho": 0.9528,
+   "raw_mae": 6.2872,
+   "raw_rmse": 7.676,
+   "cal_mae": 4.723,
+   "cal_rmse": 5.8089,
+   "accuracy": 0.7111,
+   "within_one": 1.0,
+   "kappa_qw": 0.7999,
+   "macro_f1": 0.7106
+  },
+  {
+   "name": "3 inputs (no assignments)",
+   "n_rules": 27,
+   "raw_r": 0.9498,
+   "raw_r2": 0.902,
+   "raw_rho": 0.9511,
+   "raw_mae": 7.3296,
+   "raw_rmse": 8.9464,
+   "cal_mae": 4.6776,
+   "cal_rmse": 5.7016,
+   "accuracy": 0.6778,
+   "within_one": 1.0,
+   "kappa_qw": 0.7855,
+   "macro_f1": 0.6785
+  },
+  {
+   "name": "Trapezoidal MFs",
+   "n_rules": 81,
+   "raw_r": 0.9482,
+   "raw_r2": 0.899,
+   "raw_rho": 0.9527,
+   "raw_mae": 6.2931,
+   "raw_rmse": 7.6815,
+   "cal_mae": 4.7275,
+   "cal_rmse": 5.8169,
+   "accuracy": 0.7111,
+   "within_one": 1.0,
+   "kappa_qw": 0.7999,
+   "macro_f1": 0.7106
+  },
+  {
+   "name": "Gaussian MFs",
+   "n_rules": 81,
+   "raw_r": 0.9573,
+   "raw_r2": 0.9165,
+   "raw_rho": 0.9505,
+   "raw_mae": 5.7698,
+   "raw_rmse": 6.8472,
+   "cal_mae": 4.1724,
+   "cal_rmse": 5.3047,
+   "accuracy": 0.7,
+   "within_one": 1.0,
+   "kappa_qw": 0.7327,
+   "macro_f1": 0.6995
+  },
+  {
+   "name": "AND = product",
+   "n_rules": 81,
+   "raw_r": 0.9434,
+   "raw_r2": 0.89,
+   "raw_rho": 0.9437,
+   "raw_mae": 6.3619,
+   "raw_rmse": 7.9181,
+   "cal_mae": 5.1933,
+   "cal_rmse": 6.0865,
+   "accuracy": 0.7,
+   "within_one": 1.0,
+   "kappa_qw": 0.7883,
+   "macro_f1": 0.7097
+  },
+  {
+   "name": "Implication = product",
+   "n_rules": 81,
+   "raw_r": 0.9472,
+   "raw_r2": 0.8971,
+   "raw_rho": 0.9511,
+   "raw_mae": 6.8584,
+   "raw_rmse": 8.3982,
+   "cal_mae": 4.767,
+   "cal_rmse": 5.8757,
+   "accuracy": 0.7111,
+   "within_one": 1.0,
+   "kappa_qw": 0.803,
+   "macro_f1": 0.7038
+  },
+  {
+   "name": "Defuzz: bisector",
+   "n_rules": 81,
+   "raw_r": 0.9404,
+   "raw_r2": 0.8844,
+   "raw_rho": 0.948,
+   "raw_mae": 6.9559,
+   "raw_rmse": 8.6682,
+   "cal_mae": 5.1842,
+   "cal_rmse": 6.2472,
+   "accuracy": 0.6778,
+   "within_one": 1.0,
+   "kappa_qw": 0.7809,
+   "macro_f1": 0.6826
+  },
+  {
+   "name": "Defuzz: mean of maxima",
+   "n_rules": 81,
+   "raw_r": 0.8967,
+   "raw_r2": 0.804,
+   "raw_rho": 0.8744,
+   "raw_mae": 10.094,
+   "raw_rmse": 12.8047,
+   "cal_mae": 6.763,
+   "cal_rmse": 8.3587,
+   "accuracy": 0.6444,
+   "within_one": 1.0,
+   "kappa_qw": 0.7606,
+   "macro_f1": 0.6636
+  },
+  {
+   "name": "Rules: weighted grid only",
+   "n_rules": 81,
+   "raw_r": 0.9494,
+   "raw_r2": 0.9014,
+   "raw_rho": 0.9555,
+   "raw_mae": 6.3591,
+   "raw_rmse": 7.7921,
+   "cal_mae": 4.6763,
+   "cal_rmse": 5.7237,
+   "accuracy": 0.7,
+   "within_one": 1.0,
+   "kappa_qw": 0.7897,
+   "macro_f1": 0.6939
+  }
+ ],
+ "tuning": {
+  "centers": {
+   "attendance": 0.5913533988295048,
+   "marks": 0.3,
+   "assignments": 0.5266884014908136,
+   "study_hours": 0.3
+  },
+  "train_r_before": 0.9377621303000943,
+  "train_r_after": 0.9538868797236301,
+  "test_default": {
+   "raw_r": 0.9483,
+   "raw_r2": 0.8993,
+   "raw_rho": 0.9528,
+   "raw_mae": 6.2872,
+   "raw_rmse": 7.676,
+   "cal_mae": 4.723,
+   "cal_rmse": 5.8089,
+   "accuracy": 0.7111,
+   "within_one": 1.0,
+   "kappa_qw": 0.7999,
+   "macro_f1": 0.7106
+  },
+  "test_tuned": {
+   "raw_r": 0.953,
+   "raw_r2": 0.9082,
+   "raw_rho": 0.9516,
+   "raw_mae": 5.0691,
+   "raw_rmse": 6.4203,
+   "cal_mae": 4.4887,
+   "cal_rmse": 5.5585,
+   "accuracy": 0.8778,
+   "within_one": 1.0,
+   "kappa_qw": 0.9054,
+   "macro_f1": 0.8404
+  }
+ },
+ "sensitivity": [
+  {
+   "input": "marks",
+   "min": 39.99999999999999,
+   "max": 69.90586637696903,
+   "range": 29.905866376969037
+  },
+  {
+   "input": "attendance",
+   "min": 46.9954128440367,
+   "max": 69.90586637696903,
+   "range": 22.91045353293233
+  },
+  {
+   "input": "assignments",
+   "min": 51.31924058232029,
+   "max": 56.43622244488977,
+   "range": 5.116981862569482
+  },
+  {
+   "input": "study_hours",
+   "min": 53.013367711225705,
+   "max": 56.436222444889786,
+   "range": 3.4228547336640816
+  }
+ ],
+ "monotonicity": {
+  "attendance": {
+   "violating_sweeps": 0.47333333333333333,
+   "worst_drop": 22.005138520946375
+  },
+  "marks": {
+   "violating_sweeps": 0.16666666666666666,
+   "worst_drop": 3.2685415116245835
+  },
+  "assignments": {
+   "violating_sweeps": 0.3933333333333333,
+   "worst_drop": 4.456061443330704
+  },
+  "study_hours": {
+   "violating_sweeps": 0.44,
+   "worst_drop": 4.493019271999984
+  }
+ },
+ "monotonicity_weighted_only": {
+  "attendance": {
+   "violating_sweeps": 0.36666666666666664,
+   "worst_drop": 3.641797079323368
+  },
+  "marks": {
+   "violating_sweeps": 0.19333333333333333,
+   "worst_drop": 2.8111797316317944
+  },
+  "assignments": {
+   "violating_sweeps": 0.2733333333333333,
+   "worst_drop": 4.456061443330704
+  },
+  "study_hours": {
+   "violating_sweeps": 0.3933333333333333,
+   "worst_drop": 4.459087272868366
+  }
+ },
+ "robustness": [
+  {
+   "sigma": 0.02,
+   "mean_abs_shift": 1.46353023060466,
+   "label_flip_rate": 0.041111111111111105
+  },
+  {
+   "sigma": 0.05,
+   "mean_abs_shift": 3.541588950072333,
+   "label_flip_rate": 0.13111111111111112
+  },
+  {
+   "sigma": 0.1,
+   "mean_abs_shift": 5.966844350971973,
+   "label_flip_rate": 0.22222222222222218
+  }
+ ],
+ "rule_usage": {
+  "never_fired": 12,
+  "never_strongest": 54,
+  "total": 81
+ },
+ "rules": [
+  {
+   "source": "slide",
+   "rule": "IF attendance is low AND marks is poor AND assignments is poor AND study_hours is low THEN performance is poor",
+   "note": "slide 4 rule 3"
+  },
+  {
+   "source": "slide",
+   "rule": "IF attendance is low AND marks is poor AND assignments is poor AND study_hours is medium THEN performance is poor",
+   "note": "slide 4 rule 3"
+  },
+  {
+   "source": "slide",
+   "rule": "IF attendance is low AND marks is poor AND assignments is poor AND study_hours is high THEN performance is poor",
+   "note": "slide 4 rule 3"
+  },
+  {
+   "source": "slide",
+   "rule": "IF attendance is low AND marks is poor AND assignments is average AND study_hours is low THEN performance is poor",
+   "note": "slide 4 rule 3"
+  },
+  {
+   "source": "slide",
+   "rule": "IF attendance is low AND marks is poor AND assignments is average AND study_hours is medium THEN performance is poor",
+   "note": "slide 4 rule 3"
+  },
+  {
+   "source": "slide",
+   "rule": "IF attendance is low AND marks is poor AND assignments is average AND study_hours is high THEN performance is poor",
+   "note": "slide 4 rule 3"
+  },
+  {
+   "source": "slide",
+   "rule": "IF attendance is low AND marks is poor AND assignments is good AND study_hours is low THEN performance is poor",
+   "note": "slide 4 rule 3"
+  },
+  {
+   "source": "slide",
+   "rule": "IF attendance is low AND marks is poor AND assignments is good AND study_hours is medium THEN performance is poor",
+   "note": "slide 4 rule 3"
+  },
+  {
+   "source": "slide",
+   "rule": "IF attendance is low AND marks is poor AND assignments is good AND study_hours is high THEN performance is poor",
+   "note": "slide 4 rule 3"
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is low AND marks is average AND assignments is poor AND study_hours is low THEN performance is poor",
+   "note": ""
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is low AND marks is average AND assignments is poor AND study_hours is medium THEN performance is poor",
+   "note": ""
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is low AND marks is average AND assignments is poor AND study_hours is high THEN performance is average",
+   "note": ""
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is low AND marks is average AND assignments is average AND study_hours is low THEN performance is average",
+   "note": ""
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is low AND marks is average AND assignments is average AND study_hours is medium THEN performance is average",
+   "note": ""
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is low AND marks is average AND assignments is average AND study_hours is high THEN performance is average",
+   "note": ""
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is low AND marks is average AND assignments is good AND study_hours is low THEN performance is average",
+   "note": ""
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is low AND marks is average AND assignments is good AND study_hours is medium THEN performance is average",
+   "note": ""
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is low AND marks is average AND assignments is good AND study_hours is high THEN performance is good",
+   "note": ""
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is low AND marks is good AND assignments is poor AND study_hours is low THEN performance is average",
+   "note": ""
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is low AND marks is good AND assignments is poor AND study_hours is medium THEN performance is average",
+   "note": ""
+  },
+  {
+   "source": "slide",
+   "rule": "IF attendance is low AND marks is good AND assignments is poor AND study_hours is high THEN performance is excellent",
+   "note": "slide 4 rule 4"
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is low AND marks is good AND assignments is average AND study_hours is low THEN performance is average",
+   "note": ""
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is low AND marks is good AND assignments is average AND study_hours is medium THEN performance is good",
+   "note": ""
+  },
+  {
+   "source": "slide",
+   "rule": "IF attendance is low AND marks is good AND assignments is average AND study_hours is high THEN performance is excellent",
+   "note": "slide 4 rule 4"
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is low AND marks is good AND assignments is good AND study_hours is low THEN performance is good",
+   "note": ""
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is low AND marks is good AND assignments is good AND study_hours is medium THEN performance is good",
+   "note": ""
+  },
+  {
+   "source": "slide",
+   "rule": "IF attendance is low AND marks is good AND assignments is good AND study_hours is high THEN performance is excellent",
+   "note": "slide 4 rule 4"
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is medium AND marks is poor AND assignments is poor AND study_hours is low THEN performance is poor",
+   "note": ""
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is medium AND marks is poor AND assignments is poor AND study_hours is medium THEN performance is poor",
+   "note": ""
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is medium AND marks is poor AND assignments is poor AND study_hours is high THEN performance is poor",
+   "note": ""
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is medium AND marks is poor AND assignments is average AND study_hours is low THEN performance is poor",
+   "note": ""
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is medium AND marks is poor AND assignments is average AND study_hours is medium THEN performance is average",
+   "note": ""
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is medium AND marks is poor AND assignments is average AND study_hours is high THEN performance is average",
+   "note": ""
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is medium AND marks is poor AND assignments is good AND study_hours is low THEN performance is average",
+   "note": ""
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is medium AND marks is poor AND assignments is good AND study_hours is medium THEN performance is average",
+   "note": ""
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is medium AND marks is poor AND assignments is good AND study_hours is high THEN performance is average",
+   "note": ""
+  },
+  {
+   "source": "slide",
+   "rule": "IF attendance is medium AND marks is average AND assignments is poor AND study_hours is low THEN performance is average",
+   "note": "slide 4 rule 2"
+  },
+  {
+   "source": "slide",
+   "rule": "IF attendance is medium AND marks is average AND assignments is poor AND study_hours is medium THEN performance is average",
+   "note": "slide 4 rule 2"
+  },
+  {
+   "source": "slide",
+   "rule": "IF attendance is medium AND marks is average AND assignments is poor AND study_hours is high THEN performance is average",
+   "note": "slide 4 rule 2"
+  },
+  {
+   "source": "slide",
+   "rule": "IF attendance is medium AND marks is average AND assignments is average AND study_hours is low THEN performance is average",
+   "note": "slide 4 rule 2"
+  },
+  {
+   "source": "slide",
+   "rule": "IF attendance is medium AND marks is average AND assignments is average AND study_hours is medium THEN performance is average",
+   "note": "slide 4 rule 2"
+  },
+  {
+   "source": "slide",
+   "rule": "IF attendance is medium AND marks is average AND assignments is average AND study_hours is high THEN performance is average",
+   "note": "slide 4 rule 2"
+  },
+  {
+   "source": "slide",
+   "rule": "IF attendance is medium AND marks is average AND assignments is good AND study_hours is low THEN performance is average",
+   "note": "slide 4 rule 2"
+  },
+  {
+   "source": "slide",
+   "rule": "IF attendance is medium AND marks is average AND assignments is good AND study_hours is medium THEN performance is average",
+   "note": "slide 4 rule 2"
+  },
+  {
+   "source": "slide",
+   "rule": "IF attendance is medium AND marks is average AND assignments is good AND study_hours is high THEN performance is average",
+   "note": "slide 4 rule 2"
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is medium AND marks is good AND assignments is poor AND study_hours is low THEN performance is average",
+   "note": ""
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is medium AND marks is good AND assignments is poor AND study_hours is medium THEN performance is average",
+   "note": ""
+  },
+  {
+   "source": "slide",
+   "rule": "IF attendance is medium AND marks is good AND assignments is poor AND study_hours is high THEN performance is excellent",
+   "note": "slide 4 rule 4"
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is medium AND marks is good AND assignments is average AND study_hours is low THEN performance is good",
+   "note": ""
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is medium AND marks is good AND assignments is average AND study_hours is medium THEN performance is good",
+   "note": ""
+  },
+  {
+   "source": "slide",
+   "rule": "IF attendance is medium AND marks is good AND assignments is average AND study_hours is high THEN performance is excellent",
+   "note": "slide 4 rule 4"
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is medium AND marks is good AND assignments is good AND study_hours is low THEN performance is good",
+   "note": ""
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is medium AND marks is good AND assignments is good AND study_hours is medium THEN performance is good",
+   "note": ""
+  },
+  {
+   "source": "slide",
+   "rule": "IF attendance is medium AND marks is good AND assignments is good AND study_hours is high THEN performance is excellent",
+   "note": "slide 4 rule 4"
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is high AND marks is poor AND assignments is poor AND study_hours is low THEN performance is poor",
+   "note": ""
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is high AND marks is poor AND assignments is poor AND study_hours is medium THEN performance is poor",
+   "note": ""
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is high AND marks is poor AND assignments is poor AND study_hours is high THEN performance is average",
+   "note": ""
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is high AND marks is poor AND assignments is average AND study_hours is low THEN performance is average",
+   "note": ""
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is high AND marks is poor AND assignments is average AND study_hours is medium THEN performance is average",
+   "note": ""
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is high AND marks is poor AND assignments is average AND study_hours is high THEN performance is average",
+   "note": ""
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is high AND marks is poor AND assignments is good AND study_hours is low THEN performance is average",
+   "note": ""
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is high AND marks is poor AND assignments is good AND study_hours is medium THEN performance is average",
+   "note": ""
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is high AND marks is poor AND assignments is good AND study_hours is high THEN performance is good",
+   "note": ""
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is high AND marks is average AND assignments is poor AND study_hours is low THEN performance is average",
+   "note": ""
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is high AND marks is average AND assignments is poor AND study_hours is medium THEN performance is average",
+   "note": ""
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is high AND marks is average AND assignments is poor AND study_hours is high THEN performance is average",
+   "note": ""
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is high AND marks is average AND assignments is average AND study_hours is low THEN performance is average",
+   "note": ""
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is high AND marks is average AND assignments is average AND study_hours is medium THEN performance is good",
+   "note": ""
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is high AND marks is average AND assignments is average AND study_hours is high THEN performance is good",
+   "note": ""
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is high AND marks is average AND assignments is good AND study_hours is low THEN performance is good",
+   "note": ""
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is high AND marks is average AND assignments is good AND study_hours is medium THEN performance is good",
+   "note": ""
+  },
+  {
+   "source": "grid",
+   "rule": "IF attendance is high AND marks is average AND assignments is good AND study_hours is high THEN performance is good",
+   "note": ""
+  },
+  {
+   "source": "slide",
+   "rule": "IF attendance is high AND marks is good AND assignments is poor AND study_hours is low THEN performance is excellent",
+   "note": "slide 4 rule 1"
+  },
+  {
+   "source": "slide",
+   "rule": "IF attendance is high AND marks is good AND assignments is poor AND study_hours is medium THEN performance is excellent",
+   "note": "slide 4 rule 1"
+  },
+  {
+   "source": "slide",
+   "rule": "IF attendance is high AND marks is good AND assignments is poor AND study_hours is high THEN performance is excellent",
+   "note": "slide 4 rule 1"
+  },
+  {
+   "source": "slide",
+   "rule": "IF attendance is high AND marks is good AND assignments is average AND study_hours is low THEN performance is excellent",
+   "note": "slide 4 rule 1"
+  },
+  {
+   "source": "slide",
+   "rule": "IF attendance is high AND marks is good AND assignments is average AND study_hours is medium THEN performance is excellent",
+   "note": "slide 4 rule 1"
+  },
+  {
+   "source": "slide",
+   "rule": "IF attendance is high AND marks is good AND assignments is average AND study_hours is high THEN performance is excellent",
+   "note": "slide 4 rule 1"
+  },
+  {
+   "source": "slide",
+   "rule": "IF attendance is high AND marks is good AND assignments is good AND study_hours is low THEN performance is excellent",
+   "note": "slide 4 rule 1"
+  },
+  {
+   "source": "slide",
+   "rule": "IF attendance is high AND marks is good AND assignments is good AND study_hours is medium THEN performance is excellent",
+   "note": "slide 4 rule 1"
+  },
+  {
+   "source": "slide",
+   "rule": "IF attendance is high AND marks is good AND assignments is good AND study_hours is high THEN performance is excellent",
+   "note": "slide 4 rule 1"
+  }
+ ],
+ "advice_example": [
+  {
+   "input": "marks",
+   "from": 55,
+   "to": 70.0,
+   "gain": 11.145588886921225,
+   "label": "good"
+  },
+  {
+   "input": "attendance",
+   "from": 60,
+   "to": 75.0,
+   "gain": 7.770584464580075,
+   "label": "good"
+  },
+  {
+   "input": "assignments",
+   "from": 50,
+   "to": 65.0,
+   "gain": 1.2383300195392977,
+   "label": "average"
+  },
+  {
+   "input": "study_hours",
+   "from": 3,
+   "to": 4.2,
+   "gain": -0.8400230963175588,
+   "label": "average"
+  }
+ ]
+}
